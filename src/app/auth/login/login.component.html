@@ -1,0 +1,42 @@
+<div class="login-container">
+    <div class="login-content">
+        <mat-card>
+            <div class="logo">
+                <img src="../../../assets/211x63.png">
+            </div>
+            <form [formGroup]="loginForm">
+                <div class="inputs">
+                    <mat-form-field>
+                        <input autofocus type="email" matInput placeholder="Email" formControlName="email">
+                        <mat-icon mat-icon-button matSuffix>person_outline</mat-icon>
+                    </mat-form-field>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" style="color: red; margin-top: -20px;">
+                        <div *ngIf="email.errors?.['required']" style="text-align: center;">
+                            El correo es obligatorio.</div>
+                        <div *ngIf="email.errors?.['email']" style="text-align: center;">
+                            El correo debe tener un formato valido
+                        </div>
+                    </div>
+                    <mat-form-field>
+                        <!-- <mat-icon matPrefix>lock_outline</mat-icon> -->
+                            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña"  autocomplete="false" formControlName="password">
+                            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                              <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                            </button>
+                    </mat-form-field>
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                        style="color: red; margin-top: -20px;">
+                        <div *ngIf="password.errors?.['required']" style="text-align: center;">
+                            La contraseña es incorrecta.</div>
+                    </div>
+                    <button [disabled]="password.invalid" type="submit" mat-raised-button color="primary"
+                        (click)="login()">Iniciar Sesión</button>
+
+                    <div *ngIf="messageError" class="err">
+                        Correo o contraseña incorrecta.
+                    </div>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+</div>

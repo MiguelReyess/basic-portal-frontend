@@ -1,0 +1,17 @@
+
+.main{
+  margin: 50px;
+  background-repeat: no-repeat, repeat;
+  background-size: 30% auto;
+  background-position: center;
+}
+
+.div-header{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  .add-button{
+    margin: 20px;
+    margin-right: 30px;
+  }
+}
